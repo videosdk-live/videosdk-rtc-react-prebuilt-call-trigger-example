@@ -37,7 +37,7 @@ export default function Sales() {
 
   const getMeetingId = async (token) => {
     try {
-      const VIDEOSDK_API_ENDPOINT = `https://api.zujonow.com/api/meetings`;
+      const VIDEOSDK_API_ENDPOINT = `https://api.zujonow.com/v1/meetings`;
       const options = {
         method: "POST",
         headers: {
