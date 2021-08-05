@@ -37,14 +37,14 @@ export default function Sales() {
 
   const getMeetingId = async (token) => {
     try {
-      const ZUJONOW_API_ENDPOINT = `https://api.zujonow.com/api/meetings`;
+      const VIDEOSDK_API_ENDPOINT = `https://api.zujonow.com/api/meetings`;
       const options = {
         method: "POST",
         headers: {
           Authorization: token,
         },
       };
-      const response = await fetch(ZUJONOW_API_ENDPOINT, options)
+      const response = await fetch(VIDEOSDK_API_ENDPOINT, options)
         .then(async (result) => {
           const { meetingId } = await result.json();
           return meetingId;

@@ -17,9 +17,9 @@ Before running app, you need to run the authentication server
 Add API Key and Secret in `.env` of your project.
 
 ```sh
-ZUJONOW_API_KEY=''
-ZUJONOW_SECRET_KEY=''
-ZUJONOW_API_ENDPOINT=https://api.zujonow.com
+VIDEOSDK_API_KEY=''
+VIDEOSDK_SECRET_KEY=''
+VIDEOSDK_API_ENDPOINT=https://api.zujonow.com
 ```
 
 Visit, [https://www.videosdk.live/](https://www.videosdk.live/) to generate API keys and secret.
