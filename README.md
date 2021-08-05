@@ -1,10 +1,13 @@
-## SERVER =>
-## 1 - Install Dependencies 
+## SERVER
+
+## 1 - Install Dependencies
 
 Run npm install to install all dependencies from NPM.
+
 ```sh
 $ cd server
 ```
+
 ```sh
 $ npm install
 ```
@@ -30,16 +33,20 @@ Visit, [https://www.videosdk.live/](https://www.videosdk.live/) to generate API 
 $ npm start
 ```
 
-## CLIENT =>
-## 1 - Install Dependencies 
+## CLIENT
+
+## 1 - Install Dependencies
 
 Run npm install to install all dependencies from NPM.
+
 ```sh
 $ cd client
 ```
+
 ```sh
 $ npm install
 ```
+
 If you want to use yarn to install dependencies, first run the yarn import command. This will ensure that yarn installs the package versions that are specified in package-lock.json.
 
 ## 3 - Run Project
@@ -48,18 +55,18 @@ If you want to use yarn to install dependencies, first run the yarn import comma
 $ npm start
 ```
 
+## 2 - For SALES
 
-## 2 - For SALES 
 Redirect to :
+
 ```sh
 http://localhost:3000/sales
 ```
-## 3 - For CUSTOMER 
+
+## 3 - For CUSTOMER
+
 Redirect to :
+
 ```sh
 http://localhost:3000/customer
 ```
-
-
-
-
