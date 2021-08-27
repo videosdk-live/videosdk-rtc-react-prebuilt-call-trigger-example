@@ -1,30 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./App.css";
+import "../App.css";
 import io from "socket.io-client";
-import soundfile from "./ringing.mp3";
+import soundfile from "../sound/ringing.mp3";
 
 export default function Customer() {
   const audioRef = useRef();
 
-  const ENDPOINT = "http://localhost:5000/";
+  const ENDPOINT = process.env.REACT_APP_SERVER_URL;
+
   const socket = io.connect(ENDPOINT);
   const [status, setStatus] = useState("");
-
-  const getToken = async () => {
-    try {
-      const response = await fetch(`${ENDPOINT}get-token`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const { token } = await response.json();
-      return token;
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   socket.on("connectionStatus", ({ text, meetingId }) => {
     setStatus(text);
@@ -41,29 +26,39 @@ export default function Customer() {
 
   const callFunc = async (meetingId) => {
     const videoMeeting = new window.VideoSDKMeeting();
-    const token = await getToken();
+    const apiKey = process.env.REACT_APP_VIDEOSDK_API_KEY; // generated from app.videosdk.live
+    const name = "Joan Robbins";
+    const config = {
+      name: name,
+      apiKey: apiKey,
+      meetingId: meetingId,
 
-    let name = "Customer";
+      containerId: null,
+      redirectOnLeave: "https://www.videosdk.live/",
 
-    const videoMeetingSpecs = {
       micEnabled: true,
       webcamEnabled: true,
-      name,
-      meetingId,
-      redirectOnLeave: window.location.href,
+      participantCanToggleSelfWebcam: true,
+      participantCanToggleSelfMic: true,
+
       chatEnabled: true,
       screenShareEnabled: true,
       pollEnabled: true,
       whiteBoardEnabled: true,
-      participantCanToggleSelfWebcam: true,
-      participantCanToggleSelfMic: true,
       raiseHandEnabled: true,
-      token: token,
-      containerId: null,
+
       recordingEnabled: true,
       recordingWebhookUrl: "https://www.videosdk.live/callback",
+      participantCanToggleRecording: true,
+
+      brandingEnabled: true,
+      brandLogoURL: "https://picsum.photos/200",
+      brandName: "Awesome startup",
+
+      participantCanLeave: true, // if false, leave button won't be visible
     };
-    await videoMeeting.init(videoMeetingSpecs);
+
+    await videoMeeting.init(config);
   };
 
   useEffect(() => {

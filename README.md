@@ -1,57 +1,102 @@
 # Video SDK RTC Call Trigger Code Sample
 
-This code sample represents call trigger feature using video sdk. Below are the steps to run the project. 
+## What is it?
+
+This code sample represents call trigger feature using video sdk built with [Video SDK RTC Prebuilt SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/prebuilt-sdk-js/setup) and [Video SDK RTC JS SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/javascript-sdk/setup)
+
+- Built for serverless video calling experience.
+- Scale it upto 5,000 participants with low code.
+- 10,000 minutes free on monthly basis.
+- Inbuilt video and audio quality optimization.
+- Inbuilt chat poll, whiteboard, Q and A support.
+
+![Video API example](https://raw.githubusercontent.com/videosdk-live/videosdk-rtc-js-prebuilt-embedded-example/master/public/prebuilt.jpg)
+
+## Features
+
+- [x] Completely Low code and serverless.
+- [x] Video API with real-time audio, video and data streams
+- [x] 5,000+ participants support
+- [x] Chat support with rich media.
+- [x] Screen sharing with HD and Full HD.
+- [x] Play realtime video in meeting
+- [x] Connect it with social media such as Facebook, Youtube etc (RTMP out support).
+- [x] Intelligent speaker switch
+- [x] Record your meetings on cloud
+- [x] Inbuilt support of whiteboard, poll and Q & A.
+- [x] Customize UI as per your needs.
+
+## Browser Support
+
+Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/realtime-communication/see-also/device-browser-support)
+
+## Prerequisites
+
+- node
+- npm
+- react
+
+## Getting started
 ## SERVER
 
 
-### Step 1 - Install Dependencies of server
+1. Clone the repo and change directory to server
 
-Run npm install to install all dependencies from NPM.
+   ```sh
+   $ git clone https://github.com/videosdk-live/videosdk-rtc-react-prebuilt-call-trigger-example.git
+   $ cd videosdk-rtc-vue-prebuilt-example/server
+   ```
 
-```sh
-$ cd server
-$ npm install
-```
+2. Copy the `.env.example` file to `.env` file.
 
-If you want to use yarn to install dependencies, first run the yarn import command. This will ensure that yarn installs the package versions that are specified in package-lock.json.
+   ```sh
+   $ cp .env.example .env
+   ```
+3. Install NPM packages
 
-### Step 2 - Running the Authentication server
+   ```sh
+   $ npm install
+   ```
 
-Before running app, you need to run the authentication server
-Add API Key and Secret in `.env` of your project.
+4. Run the server
 
-```sh
-VIDEOSDK_API_KEY=''
-VIDEOSDK_SECRET_KEY=''
-VIDEOSDK_API_ENDPOINT=https://api.zujonow.com
-```
-
-Visit, [https://www.videosdk.live/](https://www.videosdk.live/) to generate API keys and secret.
-
-### Step 3 - Start server
-
-```sh
-$ npm start
-```
+   ```sh
+   $ npm start
+    ```
 
 ## CLIENT
 
-### Step 1 - Install Dependencies of client
 
-Run npm install to install all dependencies from NPM.
+1. Change directory to client
 
-```sh
-$ cd client
-$ npm install
-```
+   ```sh
+   $ cd videosdk-rtc-vue-prebuilt-example/client
+   ```
 
-If you want to use yarn to install dependencies, first run the yarn import command. This will ensure that yarn installs the package versions that are specified in package-lock.json.
+2. Copy the `.env.example` file to `.env` file.
 
-### Step 2 - Run client
+   ```sh
+   $ cp .env.example .env
+   ```
+  
+3. Update api key generated from [app.videosdk.live](https://app.videosdk.live/settings/api-keys) in `.env`.
 
-```sh
-$ npm start
-```
+   ```
+   REACT_APP_VIDEOSDK_API_KEY="<API KEY>"
+   ```
+
+4. Install NPM packages
+
+   ```sh
+   $ npm install
+   ```
+
+5. Run the client
+
+   ```sh
+   $ npm start
+    ```
+
 
 ## Example scenario: To trigger call between sales person and customer
 
@@ -72,7 +117,7 @@ http://localhost:3000/customer
 ```
 
 ## Step 3 - Initiate call and check the response 
-Click on "Call" button
+Click on "Execute Call" button
 
 --
 

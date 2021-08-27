@@ -1,7 +1,6 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
-const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
@@ -61,19 +60,6 @@ io.on("connect", (socket) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/get-token", (req, res) => {
-  const API_KEY = process.env.VIDEOSDK_API_KEY;
-  const SECRET_KEY = process.env.VIDEOSDK_SECRET_KEY;
-  const options = { expiresIn: "30m", algorithm: "HS256" };
-  const payload = {
-    apikey: API_KEY,
-    permissions: ["allow_join", "allow_mod"], // also accepts "ask_join"
-  };
-  const token = jwt.sign(payload, SECRET_KEY, options);
-
-  res.json({ token });
-});
 
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

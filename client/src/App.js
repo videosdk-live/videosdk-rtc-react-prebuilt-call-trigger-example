@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Sales from "./Sales";
-import Customer from "./Customer";
+import Sales from "./components/Sales";
+import Customer from "./components/Customer";
 
 export default function App() {
   const bodyElt = document.querySelector("body");

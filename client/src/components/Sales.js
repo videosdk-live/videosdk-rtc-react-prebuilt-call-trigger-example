@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import io from "socket.io-client";
-import "./App.css";
-import soundfile from "./calling.mp3";
+import "../App.css";
+import soundfile from "../sound/calling.mp3";
 
 export default function Sales() {
   const audioRef = useRef();
-  const ENDPOINT = "http://localhost:5000/";
+  const ENDPOINT = process.env.REACT_APP_SERVER_URL
   const socket = io.connect(ENDPOINT);
   const [title, setTitle] = useState("Waiting...");
   const [triggered, setTriggered] = useState(false);
@@ -19,84 +19,57 @@ export default function Sales() {
     setFromUSer(from);
   });
 
-  const getToken = async () => {
-    try {
-      const response = await fetch(`${ENDPOINT}get-token`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const { token } = await response.json();
-      return token;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const getMeetingId = async (token) => {
-    try {
-      const VIDEOSDK_API_ENDPOINT = `https://api.zujonow.com/v1/meetings`;
-      const options = {
-        method: "POST",
-        headers: {
-          Authorization: token,
-        },
-      };
-      const response = await fetch(VIDEOSDK_API_ENDPOINT, options)
-        .then(async (result) => {
-          const { meetingId } = await result.json();
-          return meetingId;
-        })
-        .catch((error) => console.log("error", error));
-      return response;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   const callFunc = async () => {
     audioRef.current.pause();
     const videoMeeting = new window.VideoSDKMeeting();
-    const token = await getToken();
-    const meetingId = await getMeetingId(token);
-    if (meetingId) {
-      let name = "Sales Person";
+    const apiKey = process.env.REACT_APP_VIDEOSDK_API_KEY; // generated from app.videosdk.live
+    const meetingId = Date.now();
+    const name = "Sales Name";
 
-      const videoMeetingSpecs = {
-        micEnabled: true,
-        webcamEnabled: true,
-        name,
-        meetingId,
-        redirectOnLeave: window.location.href,
-        chatEnabled: true,
-        screenShareEnabled: true,
-        pollEnabled: true,
-        whiteBoardEnabled: true,
-        participantCanToggleSelfWebcam: true,
-        participantCanToggleSelfMic: true,
-        raiseHandEnabled: true,
-        token: token,
-        containerId: null,
-        recordingEnabled: true,
-        recordingWebhookUrl: "https://www.videosdk.live/callback",
-      };
-      await videoMeeting.init(videoMeetingSpecs);
+    const config = {
+      name: name,
+      apiKey: apiKey,
+      meetingId: meetingId,
 
-      socket.emit(
-        "accept-call",
-        {
-          to: fromUser,
-          meetingId: meetingId,
-        },
-        (error) => {
-          if (error) {
-            console.log(error);
-          }
+      containerId: null,
+      redirectOnLeave: "https://www.videosdk.live/",
+
+      micEnabled: true,
+      webcamEnabled: true,
+      participantCanToggleSelfWebcam: true,
+      participantCanToggleSelfMic: true,
+
+      chatEnabled: true,
+      screenShareEnabled: true,
+      pollEnabled: true,
+      whiteBoardEnabled: true,
+      raiseHandEnabled: true,
+
+      recordingEnabled: true,
+      recordingWebhookUrl: "https://www.videosdk.live/callback",
+      participantCanToggleRecording: true,
+
+      brandingEnabled: true,
+      brandLogoURL: "https://picsum.photos/200",
+      brandName: "Awesome startup",
+
+      participantCanLeave: true, // if false, leave button won't be visible
+    };
+
+    await videoMeeting.init(config);
+
+    socket.emit(
+      "accept-call",
+      {
+        to: fromUser,
+        meetingId: meetingId,
+      },
+      (error) => {
+        if (error) {
+          console.log(error);
         }
-      );
-    }
+      }
+    );
   };
 
   const login = () => {
