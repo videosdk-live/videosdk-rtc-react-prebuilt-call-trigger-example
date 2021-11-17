@@ -10,7 +10,6 @@ This code sample represents call trigger feature using video sdk built with [Vid
 - Inbuilt video and audio quality optimization.
 - Inbuilt chat poll, whiteboard, Q and A support.
 
-![Video API example](https://raw.githubusercontent.com/videosdk-live/videosdk-rtc-js-prebuilt-embedded-example/master/public/prebuilt.jpg)
 
 ## Features
 
