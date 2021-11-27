@@ -10,7 +10,6 @@ This code sample represents call trigger feature using video sdk built with [Vid
 - Inbuilt video and audio quality optimization.
 - Inbuilt chat poll, whiteboard, Q and A support.
 
-
 ## Features
 
 - [x] Completely Low code and serverless.
@@ -36,8 +35,8 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 - react
 
 ## Getting started
-## SERVER
 
+## SERVER
 
 1. Clone the repo and change directory to server
 
@@ -51,20 +50,28 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
    ```sh
    $ cp .env.example .env
    ```
-3. Install NPM packages
+
+3. Update the api key and secret values in the `.env` file with the ones generated from the developer console.
+
+   ```
+   VIDEOSDK_API_KEY=''
+   VIDEOSDK_SECRET_KEY=''
+   VIDEOSDK_API_ENDPOINT=https://api.zujonow.com
+   ```
+
+4. Install NPM packages
 
    ```sh
    $ npm install
    ```
 
-4. Run the server
+5. Run the server
 
    ```sh
    $ npm start
-    ```
+   ```
 
 ## CLIENT
-
 
 1. Change directory to client
 
@@ -77,11 +84,11 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
    ```sh
    $ cp .env.example .env
    ```
-  
-3. Update api key generated from [app.videosdk.live](https://app.videosdk.live/settings/api-keys) in `.env`.
+
+3. Update api server url in `.env`.
 
    ```
-   REACT_APP_VIDEOSDK_API_KEY="<API KEY>"
+   REACT_APP_SERVER_URL="<SERVER_URL>"
    ```
 
 4. Install NPM packages
@@ -94,12 +101,11 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 
    ```sh
    $ npm start
-    ```
-
+   ```
 
 ## Example scenario: To trigger call between sales person and customer
 
-### Step 1 - For sales person, open below URL in browser 
+### Step 1 - For sales person, open below URL in browser
 
 Redirect to :
 
@@ -107,7 +113,7 @@ Redirect to :
 http://localhost:3000/sales
 ```
 
-### Step 2 - For customer, open below url in browser 
+### Step 2 - For customer, open below url in browser
 
 Redirect to :
 
@@ -115,7 +121,8 @@ Redirect to :
 http://localhost:3000/customer
 ```
 
-## Step 3 - Initiate call and check the response 
+## Step 3 - Initiate call and check the response
+
 Click on "Execute Call" button
 
 --

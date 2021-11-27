@@ -24,7 +24,6 @@ export default function Customer() {
       audioRef.current.pause();
     } else if (text === "Connected!!") {
       audioRef.current.pause();
-      // callFunc(meetingId);
       setMeetingId(meetingId);
       setToken(token);
     }

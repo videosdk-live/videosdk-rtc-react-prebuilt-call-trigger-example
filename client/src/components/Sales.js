@@ -25,59 +25,6 @@ export default function Sales() {
     setToken(token);
   });
 
-  const callFunc = async () => {
-    audioRef.current.pause();
-    const videoMeeting = new window.VideoSDKMeeting();
-    const apiKey = process.env.REACT_APP_VIDEOSDK_API_KEY; // generated from app.videosdk.live
-    const meetingId = Date.now();
-    const name = "Sales Name";
-
-    const config = {
-      name: name,
-      apiKey: apiKey,
-      meetingId: meetingId,
-
-      containerId: null,
-      redirectOnLeave: "https://www.videosdk.live/",
-
-      micEnabled: true,
-      webcamEnabled: true,
-      participantCanToggleSelfWebcam: true,
-      participantCanToggleSelfMic: true,
-
-      chatEnabled: true,
-      screenShareEnabled: true,
-      pollEnabled: true,
-      whiteBoardEnabled: true,
-      raiseHandEnabled: true,
-
-      recordingEnabled: true,
-      recordingWebhookUrl: "https://www.videosdk.live/callback",
-      participantCanToggleRecording: true,
-
-      brandingEnabled: true,
-      brandLogoURL: "https://picsum.photos/200",
-      brandName: "Awesome startup",
-
-      participantCanLeave: true, // if false, leave button won't be visible
-    };
-
-    await videoMeeting.init(config);
-
-    socket.emit(
-      "accept-call",
-      {
-        to: fromUser,
-        meetingId: meetingId,
-      },
-      (error) => {
-        if (error) {
-          console.log(error);
-        }
-      }
-    );
-  };
-
   const login = () => {
     setisLoggedin(true);
     audioRef.current.load();
@@ -122,7 +69,6 @@ export default function Sales() {
                 className="button"
                 onClick={(e) => {
                   e.preventDefault();
-                  // callFunc(meetingId);
 
                   socket.emit(
                     "accept-call",
