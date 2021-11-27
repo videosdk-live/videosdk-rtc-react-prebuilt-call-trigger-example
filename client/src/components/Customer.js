@@ -2,16 +2,20 @@ import React, { useEffect, useState, useRef } from "react";
 import "../App.css";
 import io from "socket.io-client";
 import soundfile from "../sound/ringing.mp3";
+import MeetingContianer from "../meetingContianer/MeetingContianer";
 
 export default function Customer() {
   const audioRef = useRef();
 
   const ENDPOINT = process.env.REACT_APP_SERVER_URL;
 
+  const [meetingId, setMeetingId] = useState(null);
+  const [token, setToken] = useState(null);
+
   const socket = io.connect(ENDPOINT);
   const [status, setStatus] = useState("");
 
-  socket.on("connectionStatus", ({ text, meetingId }) => {
+  socket.on("connectionStatus", ({ text, meetingId, token }) => {
     setStatus(text);
 
     if (text === "Ringing...") {
@@ -20,46 +24,11 @@ export default function Customer() {
       audioRef.current.pause();
     } else if (text === "Connected!!") {
       audioRef.current.pause();
-      callFunc(meetingId);
+      // callFunc(meetingId);
+      setMeetingId(meetingId);
+      setToken(token);
     }
   });
-
-  const callFunc = async (meetingId) => {
-    const videoMeeting = new window.VideoSDKMeeting();
-    const apiKey = process.env.REACT_APP_VIDEOSDK_API_KEY; // generated from app.videosdk.live
-    const name = "Joan Robbins";
-    const config = {
-      name: name,
-      apiKey: apiKey,
-      meetingId: meetingId,
-
-      containerId: null,
-      redirectOnLeave: "https://www.videosdk.live/",
-
-      micEnabled: true,
-      webcamEnabled: true,
-      participantCanToggleSelfWebcam: true,
-      participantCanToggleSelfMic: true,
-
-      chatEnabled: true,
-      screenShareEnabled: true,
-      pollEnabled: true,
-      whiteBoardEnabled: true,
-      raiseHandEnabled: true,
-
-      recordingEnabled: true,
-      recordingWebhookUrl: "https://www.videosdk.live/callback",
-      participantCanToggleRecording: true,
-
-      brandingEnabled: true,
-      brandLogoURL: "https://picsum.photos/200",
-      brandName: "Awesome startup",
-
-      participantCanLeave: true, // if false, leave button won't be visible
-    };
-
-    await videoMeeting.init(config);
-  };
 
   useEffect(() => {
     audioRef.current.load();
@@ -79,7 +48,13 @@ export default function Customer() {
     );
   }, []);
 
-  return (
+  return meetingId && token ? (
+    <MeetingContianer
+      name={"Joan Robbins"}
+      meetingId={meetingId}
+      token={token}
+    />
+  ) : (
     <div
       style={{
         height: "100vh",
