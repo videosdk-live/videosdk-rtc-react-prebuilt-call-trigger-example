@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This code sample represents call trigger feature using video sdk built with [Video SDK RTC Prebuilt SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/prebuilt-sdk-js/setup) and [Video SDK RTC JS SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/javascript-sdk/setup)
+This code sample represents call trigger feature using video sdk built with [Video SDK RTC Prebuilt SDK](https://docs.videosdk.live/docs/guide/prebuilt-video-and-audio-calling/getting-started) and [Video SDK RTC JS SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/javascript-sdk/setup)
 
 - Built for serverless video calling experience.
 - Scale it upto 5,000 participants with low code.
@@ -42,25 +42,25 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 1. Clone the repo and change directory to server
 
    ```sh
-   $ git clone https://github.com/videosdk-live/videosdk-rtc-react-prebuilt-call-trigger-example.git
-   $ cd videosdk-rtc-vue-prebuilt-example/server
+   git clone https://github.com/videosdk-live/videosdk-rtc-react-prebuilt-call-trigger-example.git
+   cd videosdk-rtc-vue-prebuilt-example/server
    ```
 
 2. Copy the `.env.example` file to `.env` file.
 
    ```sh
-   $ cp .env.example .env
+   cp .env.example .env
    ```
 3. Install NPM packages
 
    ```sh
-   $ npm install
+   npm install
    ```
 
 4. Run the server
 
    ```sh
-   $ npm start
+   npm start
     ```
 
 ## CLIENT
@@ -69,13 +69,13 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 1. Change directory to client
 
    ```sh
-   $ cd videosdk-rtc-vue-prebuilt-example/client
+   cd videosdk-rtc-vue-prebuilt-example/client
    ```
 
 2. Copy the `.env.example` file to `.env` file.
 
    ```sh
-   $ cp .env.example .env
+   cp .env.example .env
    ```
   
 3. Update api key generated from [app.videosdk.live](https://app.videosdk.live/settings/api-keys) in `.env`.
@@ -87,13 +87,13 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 4. Install NPM packages
 
    ```sh
-   $ npm install
+   npm install
    ```
 
 5. Run the client
 
    ```sh
-   $ npm start
+   npm start
     ```
 
 
@@ -120,4 +120,4 @@ Click on "Execute Call" button
 
 --
 
-For more information visit our official [documentation](https://docs.videosdk.live/docs/realtime-communication/intro)
+For more information visit our official [documentation](https://docs.videosdk.live/docs/guide/prebuilt-video-and-audio-calling/getting-started)
