@@ -43,7 +43,7 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 
    ```sh
    git clone https://github.com/videosdk-live/videosdk-rtc-react-prebuilt-call-trigger-example.git
-   cd videosdk-rtc-vue-prebuilt-example/server
+   cd videosdk-rtc-react-prebuilt-call-trigger-example/server
    ```
 
 2. Copy the `.env.example` file to `.env` file.
@@ -69,7 +69,7 @@ Visit our official guide for [Browser Support](https://docs.videosdk.live/docs/r
 1. Change directory to client
 
    ```sh
-   cd videosdk-rtc-vue-prebuilt-example/client
+   cd videosdk-rtc-react-prebuilt-call-trigger-example/client
    ```
 
 2. Copy the `.env.example` file to `.env` file.
