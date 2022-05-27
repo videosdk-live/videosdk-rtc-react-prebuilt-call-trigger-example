@@ -1,5 +1,7 @@
 # Video SDK RTC Call Trigger Code Sample
 
+THIS REPO is DEPRECATED. Please refer to https://github.com/videosdk-live/videosdk-rtc-prebuilt-examples
+
 ## What is it?
 
 This code sample represents call trigger feature using video sdk built with [Video SDK RTC Prebuilt SDK](https://docs.videosdk.live/docs/guide/prebuilt-video-and-audio-calling/getting-started) and [Video SDK RTC JS SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/javascript-sdk/setup)
